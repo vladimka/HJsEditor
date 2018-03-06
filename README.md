@@ -1,2 +1,2 @@
 # HJsEditor
-Constructor of HTML code on JavaScript
+Креативный конструктор HTML страниц с использованием JavaScript кода
