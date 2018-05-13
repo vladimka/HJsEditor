@@ -1,274 +1,165 @@
-function HJsEditor() {
-	var D = document;
+class HJsEditor{
+	setTitle(TITLE){
+		document.title = TITLE;
+	}
 
-	this.script = function(param){
-		this.src = param.src;
+	createDivElement(param){
+		return new div(param)
+	}
 
-		if(!param.type){
-			this.type = 'text/javascript';
-		}else{
-			this.type = param.type;
-		}
-	};
+	createTextElement(param){
+		return new text(param)
+	}
+	
+	linkCss(href){
+		var link = document.createElement('link')
 
-	this.link = function(param){
-		if(!param.rel){
-			this.rel = 'stylesheet';
-		}else{
-			this.rel = param.rel;
-		}
+		link.href = href
+		link.rel = "stylesheet"
+		link.type = "text/css"
 
+		$('head').append(link)
+	}
+}
 
-		this.href = param.href;
-	};
+class div{
+	constructor(param){
+		this.width = param.width
+		this.height = param.height
+		this.background = param.background
+		this.id = param.id
+		this.margin = param.margin;
+		this.padding = param.padding;
+		this.marginLeft = param.marginLeft;
+		this.marginRight = param.marginRight;
+		this.marginTop = param.marginTop;
+		this.marginBottom = param.marginBottom;
+		this.paddingLeft = param.paddingLeft;
+		this.paddingRight = param.paddingRight;
+		this.paddingTop = param.paddingTop;
+		this.paddingBottom = param.paddingBottom;
+		this.position = param.position;
+		this.top = param.top;
+		this.bottom = param.bottom;
+		this.left = param.left;
+		this.right = param.right;
+		this.float = param.float;
+		this.borderStyle = param.borderStyle;
+		this.borderColor = param.borderColor;
+		this.borderWidth = param.borderWidth;
+		this.borderTop = param.borderTop;
+		this.borderTopStyle = param.borderTopStyle;
+		this.borderTopColor = param.borderTopColor;
+		this.borderTopWidth = param.borderTopWidth;
+		this.borderBottom = param.borderBottom;
+		this.borderBottomStyle = param.borderBottomStyle;
+		this.borderBottomColor = param.borderBottomColor;
+		this.borderBottomWidth = param.borderBottomWidth;
+		this.borderLeft = param.borderLeft;
+		this.borderLeftStyle = param.borderLeftStyle;
+		this.borderLeftColor = param.borderLeftColor;
+		this.borderLeftWidth = param.borderLeftWidth;
+		this.borderRight = param.borderRight;
+		this.borderRightStyle = param.borderRightStyle;
+		this.borderRightColor = param.borderRightColor;
+		this.borderRightWidth = param.borderRightWidth;
+		this.border = param.border;
+		this.overflow = param.overflow;
+		this.borderRadius = param.borderRadius
+		this.borderRadiusTop = param.borderRadiusTop
+		this.borderRadiusLeft = param.borderRadiusLeft
+		this.borderRadiusBottom = param.borderRadiusBottom
+		this.borderRadiusRight = param.borderRadiusRight
+		this.display = param.display
+	}
 
-	this.createHR = function(param){
-		if(!param.color){
-			this.color = 'black';
-		}else{
-			this.color = param.color;
-		}
+	draw(){
+		var div = document.createElement('div')
 
-		this.class = param.class;
-		this.id = param.id;
-	};
+		div.style.display = this.display
+		div.id = this.id;
+		div.class = this.class;
+		div.style.paddingTop = this.paddingTop;
+		div.style.paddingBottom = this.paddingBottom;
+		div.style.paddingLeft = this.paddingLeft;
+		div.style.paddingRight = this.paddingRight;
+		div.style.marginTop = this.marginTop;
+		div.style.marginBottom = this.marignBottom;
+		div.style.marginLeft = this.marginLeft;
+		div.style.marginRight = this.marginRight;
+		div.style.float = this.float;
+		div.style.position = this.position;
+		div.style.top = this.top;
+		div.style.left = this.left;
+		div.style.bottom = this.bottom;
+		div.style.right = this.right;
+		div.style.borderStyle = this.borderStyle;
+		div.style.borderColor = this.borderColor;		
+		div.style.borderWidth = this.borderWidth;
+		div.style.borderTop = this.borderTop;
+		div.style.borderTopColor = this.borderTopColor;
+		div.style.borderTopStyle = this.borderTopStyle;
+		div.style.borderTopWidth = this.borderTopWidth;
+		div.style.borderBottom = this.borderBottom;
+		div.style.borderBottomColor = this.borderBottomColor;
+		div.style.borderBottomStyle = this.borderBottomStyle;
+		div.style.borderBottomWidth = this.borderBottomWidth;
+		div.style.borderLeft = this.borderLeft;
+		div.style.borderLeftColor = this.borderLeftColor;
+		div.style.borderLeftStyle = this.borderLeftStyle;
+		div.style.borderLeftWidth = this.borderLeftWidth;
+		div.style.borderRight = this.borderRight;
+		div.style.borderRightColor = this.borderRightColor;
+		div.style.borderRightStyle = this.borderRightStyle;
+		div.style.borderRightWidth = this.borderRightWidth;
+		div.style.border = this.border;
+		div.style.overflow = this.overflow;
+		div.style.width = this.width
+		div.style.height = this.height
+		div.style.background = this.background
+		div.style.borderRadius = this.borderRadius
+		div.style.borderRadiusTop = this.borderRadiusTop
+		div.style.borderRadiusLeft = this.borderRadiusLeft
+		div.style.borderRadiusBottom = this.borderRadiusBottom
+		div.style.borderRadiusRight = this.borderRadiusRight
 
-	this.createText = function(param){
-		if(!param.type){
-			this.type = 'p';
-		}else{
-			this.type = param.type;
-			if(param.type == 'a'){
+		$('body').append(div)
+	}
+}
 
-				if(!param.href){
-					this.href = '#';
-				}else{
-					this.href = param.href;
-				}
+class text{
+	constructor(param){
+		this.type = param.type
+		this.text = param.text
+		this.fontSize = param.fontSize
+		this.fontWeight = param.fontWeight
+		this.fontFamily = param.fontFamily
+		this.color = param.color
+		this.position = param.position
+		this.top = param.top
+		this.left = param.left
+		this.right = param.right
+		this.bottom = param.bottom
+		this.transform = param.transform
+		this.textAlign = param.textAlign
+	}
 
-			}
-		}
+	draw(){
+		var tx = document.createElement(this.type)
 
-		if(!param.text){
-			this.text = 'text';
-		}else{
-			this.text = param.text;
-		}
+		tx.innerText = this.text
+		tx.style.fontSize = this.fontSize
+		tx.style.fontWeight = this.fontWeight
+		tx.style.fontFamily = this.fontFamily
+		tx.style.color = this.color
+		tx.style.position = this.position
+		tx.style.top = this.top
+		tx.style.left = this.left
+		tx.style.right = this.right
+		tx.style.bottom = this.bottom
+		tx.style.textAlign = this.textAlign
+		tx.style.transform = this.transform
 
-		if(!param.fontFamily){
-			this.fontFamily = 'sefif';
-		}else{
-			this.fontFamily = param.fontFamily;
-		}
-
-		this.fontSize = param.fontSize + 'px';
-
-		if(!param.color){
-			if(this.type == 'a'){
-				this.color == 'blue';
-			}else{
-				this.color = 'black';
-			}
-			
-		}else{
-			this.color = param.color;
-		}
-
-		if(!param.padding){
-			this.padding = 0 + 'px';
-		}else{
-			this.padding = param.padding + 'px';
-		}
-
-		if(!param.margin){
-			this.margin = 0 + 'px';
-		}else{
-			this.margin = param.margin + 'px';
-		}
-
-		this.class = param.class;
-		this.id = param.id;
-	};
-
-	this.createDiv = function(param){
-		if(!param.height){
-			this.height = 0 + 'px';
-		}else{
-			this.height = param.height + 'px';
-		}
-
-		if(!param.width){
-			this.width = 0 + 'px';
-		}else{
-			this.width = param.width + 'px';
-		}
-
-		if(!param.backgroundColor){
-			this.backgroundColor = 'white';
-		}else{
-			this.backgroundColor = param.backgroundColor;
-		}
-
-		if(!param.padding){
-			this.padding = 0 + 'px';
-		}else{
-			this.padding = param.padding + 'px';
-		}
-
-		if(!param.margin){
-			this.margin = 0 + 'px';
-		}else{
-			this.margin = param.margin + 'px';
-		}
-
-		if(!param.borderRadius){
-			this.borderRadius = 0 + 'px';
-		}else{
-			this.borderRadius = param.borderRadius + 'px';
-		}
-
-		this.class = param.class;
-		this.id = param.id;
-	};
-
-	this.createButton = function(param){
-		if(!param.height){
-			this.height = 0 + 'px';
-		}else{
-			this.height = param.height + 'px';
-		}
-
-		if(!param.width){
-			this.width = 0 + 'px';
-		}else{
-			this.width = param.width + 'px';
-		}
-
-		if(!param.backgroundColor){
-			this.backgroundColor = 'white';
-		}else{
-			this.backgroundColor = param.backgroundColor;
-		}
-
-		if(!param.padding){
-			this.padding = 0 + 'px';
-		}else{
-			this.padding = param.padding + 'px';
-		}
-
-		if(!param.margin){
-			this.margin = 0 + 'px';
-		}else{
-			this.margin = param.margin + 'px';
-		}
-
-		if(!param.borderRadius){
-			this.borderRadius = 0 + 'px';
-		}else{
-			this.borderRadius = param.borderRadius + 'px';
-		}
-
-		if(!param.text){
-			this.text = 'text';
-		}else{
-			this.text = param.text;
-		}
-
-		this.class = param.class;
-		this.id = param.id;
-	};
-
-	this.createHR.prototype= {
-		draw : function(){
-
-			var hr = D.createElement("hr");
-
-			hr.style.color = this.color;
-			hr.class = this.class;
-			hr.id = this.id;
-
-			D.body.appendChild(hr);
-
-		}
-	};
-
-	this.createText.prototype = {
-
-		draw : function(){
-
-			var text = D.createElement(this.type);
-
-			text.innerText = this.text;
-			text.style.fontSize = this.fontSize;
-			text.style.fontFamily = this.fontFamily;
-			text.style.color = this.color;
-			text.href = this.href;
-			text.class = this.class;
-			text.id = this.id;
-
-			D.body.appendChild(text);
-
-		}
-	};
-
-	this.createDiv.prototype = {
-		draw : function(){
-
-			var div = D.createElement("div");
-
-			div.style.width = this.width;
-			div.style.height = this.height;
-			div.style.backgroundColor = this.backgroundColor;
-			div.style.padding = this.padding;
-			div.style.margin = this.margin;
-			div.style.borderRadius = this.borderRadius;
-			div.class = this.class;
-			div.id = this.id;
-			
-
-			D.body.appendChild(div);
-
-		}
-	};
-
-	this.createButton.prototype = {
-		draw : function(){
-
-			var btn = D.createElement("button");
-
-			btn.style.width = this.width;
-			btn.style.height = this.height;
-			btn.style.backgroundColor = this.backgroundColor;
-			btn.style.padding = this.padding;
-			btn.style.margin = this.margin;
-			btn.innerText = this.text;
-			btn.class = this.class;
-			btn.id = this.id;
-
-			D.body.appendChild(btn);
-
-		},
-	};
-
-	this.link.prototype = {
-		createLink : function(){
-			var link = D.createElement("link");
-
-			link.rel = this.rel;
-			link.href = this.href;
-
-			D.head.appendChild(link);
-		}
-	};
-
-	this.script.prototype = {
-		createScript : function(){
-			var script = D.createElement("script");
-
-			script.type = this.type;
-			script.src = this.src;
-
-			D.head.appendChild(script);
-		}
-	};
-};
+		$('body').append(tx)
+	}
+}
